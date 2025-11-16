@@ -17,6 +17,18 @@ app.get("/", (req: Request, res: Response) => {
 
 
 
-app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on PORT ${PORT} - index.ts:20`));
 
 
+app.get("/quote", (req: Request, res: Response) => {
+  const quotes = [
+    "The best way to get started is to quit talking and begin doing.",
+    "Success is not final; failure is not fatal: It is the courage to continue that counts.",
+    "It always seems impossible until it’s done.",
+    "Don’t watch the clock; do what it does. Keep going.",
+    "Dream big and dare to fail."
+  ];
+
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  res.json({ quote: quotes[randomIndex] });
+});
